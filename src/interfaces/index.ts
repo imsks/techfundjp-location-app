@@ -8,3 +8,8 @@ export interface Park {
 export interface MapProps {
     parks: Park[]
 }
+
+export interface MapMarkerProps {
+    location: [number, number]
+    label: string
+}
