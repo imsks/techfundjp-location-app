@@ -1,4 +1,4 @@
-import Map from "./Components/map"
+import Map from "./Components/Map"
 import "./App.css"
 import { parks } from "./data"
 

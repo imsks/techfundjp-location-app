@@ -37,9 +37,18 @@
   }
 }
 
-
 .map {
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-dropdown {
+  margin: 0 0 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.map-dropdown-item {
+  margin: 0 0 0 0.5rem;
 }

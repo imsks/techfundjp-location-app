@@ -6,4 +6,6 @@ const parks = [
     { id: 8, name: "Lucknow Park 5", lat: 26.8571, lng: 80.9491 }
 ]
 
-export { parks }
+const mapRange = [1000, 2000, 3000, 4000, 5000]
+
+export { parks, mapRange }
