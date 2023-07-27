@@ -1,5 +1,5 @@
-import Map from "./Components/Map"
 import "./App.css"
+import Map from "./Components/Map"
 import { parks } from "./data"
 
 const App = () => {

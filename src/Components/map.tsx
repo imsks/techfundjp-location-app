@@ -1,37 +1,17 @@
-import { MapProps, Park } from "../interfaces"
-import React, { useEffect, useState } from "react"
+import { MapProps } from "../interfaces"
+import React, { useState } from "react"
 import { MapContainer, TileLayer, Polyline } from "react-leaflet"
 import useUserLocation from "../hooks/useUserLocation"
 import { calculateDistance } from "../utils"
 import MapMarker from "./MapMarker"
 import MapRadiusDropdown from "./MapRadiusDropdown"
 import { mapRange } from "../data"
+import useNearestPark from "../hooks/useNearestPark"
 
 const Map: React.FC<MapProps> = ({ parks }) => {
     const [selectedRadius, setSelectedRadius] = useState<number>(mapRange[0])
-    const [nearestPark, setNearestPark] = useState<Park>()
     const userLocation = useUserLocation()
-
-    useEffect(() => {
-        if (userLocation && parks) {
-            const nearest: any = parks.reduce(
-                (nearestPark, park) => {
-                    const distance = calculateDistance(
-                        userLocation[0],
-                        userLocation[1],
-                        park.lat,
-                        park.lng
-                    )
-                    return distance < nearestPark.distance
-                        ? { ...park, distance }
-                        : nearestPark
-                },
-                { distance: Number.MAX_SAFE_INTEGER }
-            )
-
-            setNearestPark(nearest)
-        }
-    }, [userLocation, parks])
+    const nearestPark = useNearestPark(parks)
 
     const handleRadiusChange = (
         event: React.ChangeEvent<HTMLSelectElement>
